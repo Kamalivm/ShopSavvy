@@ -1,0 +1,73 @@
+{
+  "hash": "36d92f3a",
+  "configHash": "7a060b58",
+  "lockfileHash": "e3b0c442",
+  "browserHash": "3f39498a",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "90f5ab85",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "27797511",
+      "needsInterop": true
+    },
+    "react-icons/ai": {
+      "src": "../../node_modules/react-icons/ai/index.mjs",
+      "file": "react-icons_ai.js",
+      "fileHash": "87945697",
+      "needsInterop": false
+    },
+    "react-icons/bs": {
+      "src": "../../node_modules/react-icons/bs/index.mjs",
+      "file": "react-icons_bs.js",
+      "fileHash": "e0c103d6",
+      "needsInterop": false
+    },
+    "react-icons/ci": {
+      "src": "../../node_modules/react-icons/ci/index.mjs",
+      "file": "react-icons_ci.js",
+      "fileHash": "0e0a2e9f",
+      "needsInterop": false
+    },
+    "react-icons/hi": {
+      "src": "../../node_modules/react-icons/hi/index.mjs",
+      "file": "react-icons_hi.js",
+      "fileHash": "623c4187",
+      "needsInterop": false
+    },
+    "react-icons/io": {
+      "src": "../../node_modules/react-icons/io/index.mjs",
+      "file": "react-icons_io.js",
+      "fileHash": "946f4f6b",
+      "needsInterop": false
+    },
+    "react-icons/io5": {
+      "src": "../../node_modules/react-icons/io5/index.mjs",
+      "file": "react-icons_io5.js",
+      "fileHash": "65cb4ced",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "e1bd683f",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-UWZXFKA6": {
+      "file": "chunk-UWZXFKA6.js"
+    },
+    "chunk-OR4Q2QQW": {
+      "file": "chunk-OR4Q2QQW.js"
+    },
+    "chunk-UPDK7Z2H": {
+      "file": "chunk-UPDK7Z2H.js"
+    }
+  }
+}
