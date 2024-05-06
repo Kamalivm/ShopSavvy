@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import {Home} from './Pages/Home'
-import {Cart} from './Pages/Cart'
+import Cart from './Pages/Cart'
 import {Favourite} from './Pages/Favourite'
 import {Order} from './Pages/Order'
 import {Login} from './Pages/Login'
 import {Signup} from './Pages/Signup'
 import SideBar from './Components/SideBar'
+
 import{
   createBrowserRouter,
   RouterProvider,

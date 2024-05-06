@@ -1,11 +1,15 @@
-import React from 'react'
-import Cartitems from '../Components/Cartitems'
+import React,{useState} from 'react';
+import { NavLink } from 'react-router-dom';
+import Cartitems from '../Components/Cartitems';
 
-export function Cart() {
-  return (
-    <div className='ml-[80px]'>
-      <Cartitems/>
-    </div>
-  )
-}
+const Cart = ({ items,removeFromCart }) => {
+    return (
+        <div>
+            <div>
+                <Cartitems items={items} removeFromCart={removeFromCart}/>
+            </div>
+        </div>
+    );
+};
 
+export default Cart;
