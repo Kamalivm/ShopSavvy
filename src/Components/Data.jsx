@@ -44,6 +44,23 @@ import jar from '../assets/jar.jpg'
 import ladder from '../assets/ladder.webp'
 import lamp from '../assets/lamp.jpg'
 
+import bourbon from '../assets/bourbon.jpg'
+import bread from '../assets/bread.webp'
+import chocofills from '../assets/chocofills.webp'
+import chocolate from '../assets/chocolate.jpg'
+import chocos from '../assets/chocos.jpg'
+import cookies from '../assets/cookies.jpg'
+import gems from '../assets/gems.jpg'
+import hideandseek from '../assets/hideandseek.jpg'
+import jimjam from '../assets/jimjam.webp'
+import kisses from '../assets/kisses.avif'
+import kitkat from '../assets/kitkat.jpg'
+import lays1 from '../assets/lays1.webp'
+import lays2 from '../assets/lays2.webp'
+import lays3 from '../assets/lays3.jpg'
+import milkbikis from '../assets/milkbikis.jpg'
+import silkbubbly from '../assets/silkbubbly.jpeg'
+
 const Data = {
     groceryItems: [
         {
@@ -303,6 +320,104 @@ const Data = {
             img: lamp,
             title: 'Lamp',
             price: 220
+        },
+    ],
+    bakeryItems:[
+        {
+            id: 42,
+            img: bourbon,
+            title: 'BourBon',
+            price: 30
+        },
+        {
+            id: 43,
+            img: bread,
+            title: 'Bread',
+            price: 25
+        },
+        {
+            id: 44,
+            img: chocofills,
+            title: 'Choco Fills',
+            price: 40
+        },
+        {
+            id: 45,
+            img: chocolate,
+            title: 'Chocolate',
+            price: 200
+        },
+        {
+            id: 46,
+            img: chocos,
+            title: 'Chocos',
+            price: 10
+        },
+        {
+            id: 47,
+            img: cookies,
+            title: 'Cookies',
+            price: 60
+        },
+        {
+            id: 48,
+            img: gems,
+            title: 'Gems',
+            price: 10
+        },
+        {
+            id: 49,
+            img: hideandseek,
+            title: 'Hide And Seek',
+            price: 25
+        },
+        {
+            id: 50,
+            img: jimjam,
+            title: 'JimJam',
+            price: 35
+        },
+        {
+            id: 51,
+            img: kisses,
+            title: 'Kisses',
+            price: 65
+        },
+        {
+            id: 52,
+            img: kitkat,
+            title: 'Kitkat',
+            price: 20
+        },
+        {
+            id: 53,
+            img: lays1,
+            title: 'Blue lays',
+            price: 10
+        },
+        {
+            id: 54,
+            img: lays2,
+            title: 'Yellow Lays',
+            price: 10
+        },
+        {
+            id: 55,
+            img: lays3,
+            title: 'Green Lays',
+            price: 35
+        },
+        {
+            id: 56,
+            img: milkbikis,
+            title: 'MilkBikis Biscuit',
+            price: 15
+        },
+        {
+            id: 57,
+            img: silkbubbly,
+            title: 'DiaryMilk SilkBubbly',
+            price: 80
         },
     ]
 };

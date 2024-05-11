@@ -13,6 +13,7 @@ const Main = () => {
         vegetableItems: Data.vegetableItems,
         stationaryItems: Data.stationaryItems,
         householdItems: Data.householdItems,
+        bakeryItems:Data.bakeryItems,
     }
     const [filteredProducts,setFilteredProducts]=useState(Products);
 
@@ -28,6 +29,7 @@ const Main = () => {
                 vegetableItems: category === 'vegetableItems' ? Products.vegetableItems : [],
                 stationaryItems: category === 'stationaryItems' ? Products.stationaryItems : [],
                 householdItems: category === 'householdItems' ? Products.householdItems : [],
+                bakeryItems: category === 'bakeryItems' ? Products.bakeryItems : [],
             });
         } else {
             console.error(`Category '${category}' does not exist.`);
@@ -47,6 +49,9 @@ const Main = () => {
                 item.title.toLowerCase().includes(searchQuery)
             ),
             stationaryItems: Data.stationaryItems.filter((item) =>
+                item.title.toLowerCase().includes(searchQuery)
+            ),
+            bakeryItems: Data.bakeryItems.filter((item) =>
                 item.title.toLowerCase().includes(searchQuery)
             )
         };
@@ -106,11 +111,7 @@ const Main = () => {
                 </div>
                 
                 <div className='bg-white px-5 py-2 hover:bg-black hover:text-white rounded-full drop-shadow-xl'>
-                    <button>BakeryItems</button>
-                </div>
-                
-                <div className='bg-white px-5 py-2 hover:bg-black hover:text-white rounded-full drop-shadow-xl'>
-                    <button>Sweets&Snacks</button>
+                    <button onClick={() => filterByCategory('bakeryItems')}>BakeryItems</button>
                 </div>
                 
                 <div className='bg-white px-5 py-2 hover:bg-black hover:text-white rounded-full drop-shadow-xl'>
@@ -195,6 +196,22 @@ const Main = () => {
 
                 {filteredProducts.householdItems && filteredProducts.householdItems.length > 0 && (
                 filteredProducts.householdItems.map((item) => (
+                        <div key={item.id}className="product h-[300px] bg-white drop-shadow-2xl p-2 border">
+                        <img src={item.img} className='w-full h-[60%] object-cover p-2'/>
+                        <div className='m-2 bg-gray-100 p-2'>
+                            <h1 className='text-xl font-semibold'>{item.title}</h1>
+                            {/* <p className='text-sm'>{product.description}</p> */}
+                            <div className='flex justify-between items-center'>
+                                <p className='text-xl font-bold'>Rs. {item.price}.00</p>
+                                <button><IoHeart color={'red'} size={'1.4rem'}/></button>
+                                <button onClick={() => handleSubmit(item)}><CiShoppingCart size={'1.4rem'}/></button>
+                            </div>
+                        </div>
+                    </div>    
+                    )))}
+
+                {filteredProducts.bakeryItems && filteredProducts.bakeryItems.length > 0 && (
+                filteredProducts.bakeryItems.map((item) => (
                         <div key={item.id}className="product h-[300px] bg-white drop-shadow-2xl p-2 border">
                         <img src={item.img} className='w-full h-[60%] object-cover p-2'/>
                         <div className='m-2 bg-gray-100 p-2'>
