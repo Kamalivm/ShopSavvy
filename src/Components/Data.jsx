@@ -31,7 +31,7 @@ import tomato from '../assets/tomato.jpeg'
 import corn from '../assets/corn.jpg'
 import brinjal from '../assets/brinjal.jpeg'
 import bittergourd from '../assets/bittergourd.jpg'
-import ladiesfinger from '../assets//ladiesfinger.jpg'
+import ladiesfinger from '../assets/ladiesfinger.jpg'
 
 import broom from '../assets/broom.jpg'
 import bucket from '../assets/bucket.jpg'
@@ -60,6 +60,25 @@ import lays2 from '../assets/lays2.webp'
 import lays3 from '../assets/lays3.jpg'
 import milkbikis from '../assets/milkbikis.jpg'
 import silkbubbly from '../assets/silkbubbly.jpeg'
+
+import car from '../assets/car.jpg'
+import dancingcactus from '../assets//dancingcactus.webp'
+import babylotion from '../assets/bodylotion.webp'
+import bsoap from '../assets/bsoap.avif'
+import bdress from '../assets//bdress.jpg'
+import btoys from '../assets/btoys.jpg'
+import btowel from '../assets/btowel.webp'
+
+import baseball from '../assets/baseball.webp'
+import cricketbat from '../assets/cricketbat.jpg'
+import football from '../assets/football.jpg'
+import skateshoe from '../assets/skateshoe.jpg'
+import tennisbat from '../assets/tennisbat.avif'
+
+import strangebook from '../assets/strangebook.jpg'
+import readinglist from '../assets/readinglist.jpg'
+import newname from '../assets/newname.jpg'
+import harrypotter from '../assets/harrypotter.jpg'
 
 const Data = {
     groceryItems: [
@@ -416,8 +435,110 @@ const Data = {
         {
             id: 57,
             img: silkbubbly,
-            title: 'DiaryMilk SilkBubbly',
+            title: 'SilkBubbly',
             price: 80
+        },
+    ],
+    kidsItems:[
+        {
+            id: 58,
+            img: car,
+            title: 'ToyCar',
+            price: 230
+        },
+        {
+            id: 59,
+            img: dancingcactus,
+            title: 'Dancing Cactus',
+            price: 130
+        },
+        {
+            id: 60,
+            img: babylotion,
+            title: 'Bbody Lotion',
+            price: 350
+        },
+        {
+            id: 61,
+            img: bsoap,
+            title: 'Baby Soap',
+            price: 90
+        },
+        {
+            id: 62,
+            img: bdress,
+            title: 'Baby Dress',
+            price: 150
+        },
+        {
+            id: 63,
+            img: btoys,
+            title: 'Baby Toys',
+            price: 190
+        },
+        {
+            id: 64,
+            img: btowel,
+            title: 'Baby Towel',
+            price: 150
+        },
+    ],
+    sportsItems:[
+        {
+            id: 65,
+            img: baseball,
+            title: 'BaseBall',
+            price: 20
+        },
+        {
+            id: 66,
+            img: cricketbat,
+            title: 'Cricket Bat',
+            price: 210
+        },
+        {
+            id: 67,
+            img: football,
+            title: 'FootBall',
+            price: 280
+        },
+        {
+            id: 68,
+            img: skateshoe,
+            title: 'Skating Shoe',
+            price: 1250
+        },
+        {
+            id: 69,
+            img: tennisbat,
+            title: 'Tennis Bat',
+            price: 550
+        },
+    ],
+    bookItems:[
+        {
+            id: 70,
+            img: harrypotter,
+            title: 'HarryPotter',
+            price: 2300
+        },
+        {
+            id: 71,
+            img: newname,
+            title: 'Write a new name in the book of life',
+            price: 1350
+        },
+        {
+            id: 72,
+            img: readinglist,
+            title: 'The Reading List',
+            price: 1580
+        },
+        {
+            id: 73,
+            img: strangebook,
+            title: 'Stranger in a Strange land',
+            price: 1900
         },
     ]
 };
