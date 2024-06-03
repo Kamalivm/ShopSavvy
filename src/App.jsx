@@ -3,10 +3,9 @@ import {Home} from './Pages/Home'
 import Cart from './Pages/Cart'
 import {Favourite} from './Pages/Favourite'
 import {Order} from './Pages/Order'
-// import {Login} from './Pages/Login'
-// import {Signup} from './Pages/Signup'
-import SideBar from './Components/SideBar'
+// import SideBar from './Components/SideBar'
 import Payment from './Pages/PaymentPage'
+import ProductDetails from './Pages/ProductDetails.jsx';
 
 import{
   createBrowserRouter,
@@ -23,6 +22,7 @@ function App() {
         {/* <Route path='/login' element = {<Login/>}/>
         <Route path='/signup' element = {<Signup/>}/> */}
         <Route path='/cart' element = {<Cart/>}/>
+        <Route path="/product/:id" element={<ProductDetails />} />
         <Route path='/favs' element = {<Favourite/>}/>
         <Route path='/orders' element = {<Order/>}/>
         <Route path='/payment' element = {<Payment/>}/>
@@ -40,9 +40,9 @@ export default App
 const Root = () => {
   return(
     <>
-    <div>
+    {/* <div>
       <SideBar/>
-    </div>
+    </div> */}
     <div>
       <Outlet/>
     </div></>

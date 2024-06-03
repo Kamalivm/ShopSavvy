@@ -1,125 +1,75 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { AiFillDelete } from 'react-icons/ai';
-import { BsArrowLeft } from 'react-icons/bs';
+import React, { useContext } from 'react';
+import { CartContext } from '../Components/CartContext';
+import { Link, NavLink } from 'react-router-dom';
 
-const Cart = ({ items, removeFromCart }) => {
-  // Initialize state for quantities
-  const [quantities, setQuantities] = useState({});
+const Cart = () => {
+    const { cartItems, removeFromCart, incrementQuantity, decrementQuantity } = useContext(CartContext);
 
-  useEffect(() => {
-    // Initialize quantities state with default value of 1 for each item
-    const initialQuantities = items.reduce((acc, item) => {
-      acc[item.id] = 1;
-      return acc;
-    }, {});
-    setQuantities(initialQuantities);
-  }, [items]);
+    const totalAmount = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
 
-  // Handle quantity change
-  const handleQuantityChange = (id, value) => {
-    const newValue = value >= 1 ? value : 1;
-    setQuantities({
-      ...quantities,
-      [id]: newValue,
-    });
-  };
+    if (!cartItems.length) {
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-gray-100 text-black text-xl">
+                No items in the cart
+            </div>
+        );
+    }
 
-  // Calculate subtotal
-  const subtotal = items.reduce((total, item) => {
-    const itemQuantity = quantities[item.id] || 1;
-    return total + item.price * itemQuantity;
-  }, 0);
-
-  const shipping = items.length > 0 ? 20 : 0; // Assuming shipping is 20 if there are items in the cart
-  const total = subtotal + shipping;
-
-  // Check if items array is undefined or empty
-  if (!items || items.length === 0) {
-    return <div>No items in the cart.</div>;
-  }
-
-  return (
-    <div>
-      <div className='w-11/12 m-auto py-10'>
-        <h1 className='text-3xl font-bold'>Shopping Cart</h1>
-        <section className='flex justify-between items-center space-x-10'>
-          <div className='w-[60%] space-y-3'>
-            <table className='w-full'>
-              <thead className='border-b'>
-                <tr>
-                  <td className='text-gray-400 py-2'>Product</td>
-                  <td className='text-gray-400 py-2'>Price</td>
-                  <td className='text-gray-400 py-2'>Quantity</td>
-                  <td className='text-gray-400 py-2'>Total</td>
-                  <td className='text-gray-400 py-2'>Delete</td>
-                </tr>
-              </thead>
-              <tbody className='space-y-10'>
-                {items.map((item) => (
-                  <tr key={item.id} className='border-dashed border-b'>
-                    <td className='py-5'>
-                      <div className='flex items-center space-x-3 py-2'>
-                        <img src={item.img} alt={item.title} className='w-[100px] h-[100px] border rounded p-2'/>
-                        <div>
-                          <h1 className='text-xl font-bold'>{item.title}</h1>
+    return (
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+            <div className="container mx-auto px-4 py-8 bg-white rounded-lg shadow-lg max-w-6xl">
+                <h1 className="text-3xl font-bold text-gray-800 mb-8">Your Cart</h1>
+                <div className="flex space-x-6 overflow-x-auto pb-4">
+                    {cartItems.map((item) => (
+                        <div key={item.id} className="flex-shrink-0 w-64 bg-white text-gray-800 rounded-lg shadow-md overflow-hidden">
+                            <img src={item.img} alt={item.title} className="w-full h-40 object-cover rounded-t-lg" />
+                            <div className="p-4">
+                                <h2 className="text-xl font-semibold mb-2">{item.title}</h2>
+                                <p className="text-gray-400 mb-2">{item.description}</p>
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center">
+                                        <button
+                                            className="bg-gray-700 hover:bg-gray-600 text-white rounded-full px-3 py-1 mr-2"
+                                            onClick={() => decrementQuantity(item.id)}
+                                        >
+                                            -
+                                        </button>
+                                        <span className="font-semibold">{item.quantity}</span>
+                                        <button
+                                            className="bg-gray-700 hover:bg-gray-600 text-white rounded-full px-3 py-1 ml-2"
+                                            onClick={() => incrementQuantity(item.id)}
+                                        >
+                                            +
+                                        </button>
+                                    </div>
+                                    <span className="font-semibold">Rs. {item.price * item.quantity}.00</span>
+                                </div>
+                                <button
+                                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md font-semibold mt-2"
+                                    onClick={() => removeFromCart(item.id)}
+                                >
+                                    Remove
+                                </button>
+                            </div>
                         </div>
-                      </div>
-                    </td>
-                    <td>Rs. {item.price}.00</td>
-                    <td>
-                      <div className='border w-24 p-2'>
-                        <input
-                          type="number"
-                          className='w-full outline-0'
-                          value={quantities[item.id]}
-                          min={1}
-                          onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
-                        />
-                      </div>
-                    </td>
-                    <td>Rs. {(item.price * (quantities[item.id] || 1)).toFixed(2)}</td>
-                    <td>
-                      <button onClick={() => removeFromCart(item.id)}>
-                        <AiFillDelete size={20}/>
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className='my-5'>
-              <NavLink to='/'>
-                <button className='flex items-center space-x-3 bg-gray-200 font-semibold rounded p-2'>
-                  <BsArrowLeft/>
-                  <span>Continue Shopping</span>
-                </button>
-              </NavLink>
+                    ))}
+                </div>
+                <div className="mt-8 text-right">
+                    <h2 className="text-2xl font-bold text-gray-800">Total: Rs. {totalAmount}.00</h2>
+                    <button className="mt-5 bg-gradient-to-r from-black to-blue-700 hover:from-black hover:to-blue-700 text-white text-lg font-semibold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+                        <NavLink to="/payment" className="w-full h-full flex justify-center items-center">
+                            Checkout
+                        </NavLink>
+                    </button>
+                </div>
+                <div className="mt-8 text-center">
+                    <Link to="/" className="text-blue-600 hover:underline text-lg font-semibold">
+                        Continue Shopping
+                    </Link>
+                </div>
             </div>
-          </div>
-          <div className='w-[40%] h-fit border rounded p-5 space-y-5'>
-            <div className='flex justify-between items-center border-b border-dashed p-2'>
-              <h1 className='text-xl'>Sub Total</h1>
-              <p>Rs. {subtotal.toFixed(2)}</p>
-            </div>
-            <div className='flex justify-between items-center border-b p-2'>
-              <h1 className='text-xl'>Shipping</h1>
-              <p>Rs. {shipping}.00</p>
-            </div>
-            <div className='flex justify-between items-center p-2'>
-              <h1 className='text-xl'>Total</h1>
-              <p>Rs. {total.toFixed(2)}</p>
-            </div>
-            <NavLink to={{ pathname: '/payment', state: { total: total.toFixed(2) } }}>
-              <button className='w-full p-2 bg-gray-800 text-center text-white rounded'>
-                Check Out
-              </button>
-            </NavLink>
-          </div>
-        </section>
-      </div>
-    </div>
-  );
+        </div>
+    );
 };
 
 export default Cart;

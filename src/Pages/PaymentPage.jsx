@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const PaymentPage = () => {
   const location = useLocation();
@@ -13,65 +13,103 @@ const PaymentPage = () => {
   const [expiryDate, setExpiryDate] = useState('');
   const [cvv, setCvv] = useState('');
   const [paymentSuccessful, setPaymentSuccessful] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handlePayment = () => {
+    const validationErrors = {};
+
+    if (!username) validationErrors.username = 'Username is required';
+    if (!email) validationErrors.email = 'Email is required';
+    if (!phoneNumber) validationErrors.phoneNumber = 'Phone number is required';
+    if (!paymentMethod) validationErrors.paymentMethod = 'Payment method is required';
+
+    if (paymentMethod === 'creditCard' || paymentMethod === 'debitCard') {
+      if (!cardNumber) validationErrors.cardNumber = 'Card number is required';
+      if (!expiryDate) validationErrors.expiryDate = 'Expiry date is required';
+      if (!cvv) validationErrors.cvv = 'CVV is required';
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
     console.log('Processing payment...');
     // Perform payment processing logic here
     setPaymentSuccessful(true);
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-xl w-full">
-        <h1 className="text-3xl font-bold mb-4 text-gray-800">Payment Details</h1>
+    <div className="min-h-screen flex justify-center items-center">
+      <div className="bg-white p-8 rounded-lg shadow-lg max-w-xl w-full transform transition duration-300 hover:scale-105">
+        <h1 className="text-4xl font-bold mb-6 text-black">Payment Details</h1>
         <div className="mb-4">
-          <label htmlFor="username" className="block text-gray-700 font-semibold mb-2">Username</label>
-          <input type="text" id="username" className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <label htmlFor="username" className="block text-black font-semibold mb-2">Username</label>
+          <input type="text" id="username" className="w-full p-3 border border-gray-500 rounded focus:outline-none" value={username} onChange={(e) => setUsername(e.target.value)} />
+          {errors.username && <p className="text-red-500 text-sm">{errors.username}</p>}
         </div>
         <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Email</label>
-          <input type="email" id="email" className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <label htmlFor="email" className="block text-black font-semibold mb-2">Email</label>
+          <input type="email" id="email" className="w-full p-3 border border-gray-500 rounded focus:outline-none" value={email} onChange={(e) => setEmail(e.target.value)} />
+          {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
         </div>
         <div className="mb-4">
-          <label htmlFor="phoneNumber" className="block text-gray-700 font-semibold mb-2">Phone Number</label>
-          <input type="tel" id="phoneNumber" className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+          <label htmlFor="phoneNumber" className="block text-black font-semibold mb-2">Phone Number</label>
+          <input type="tel" id="phoneNumber" className="w-full p-3 border border-gray-500 rounded focus:outline-none" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+          {errors.phoneNumber && <p className="text-red-500 text-sm">{errors.phoneNumber}</p>}
         </div>
         <div className="mb-4">
-          <label htmlFor="paymentMethod" className="block text-gray-700 font-semibold mb-2">Payment Method</label>
-          <select id="paymentMethod" className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500" value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)}>
+          <label htmlFor="paymentMethod" className="block text-black font-semibold mb-2">Payment Method</label>
+          <select id="paymentMethod" className="w-full p-3 border border-gray-500 rounded focus:outline-none" value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)}>
             <option value="">Select Payment Method</option>
             <option value="creditCard">Credit Card</option>
             <option value="debitCard">Debit Card</option>
             <option value="paypal">PayPal</option>
           </select>
+          {errors.paymentMethod && <p className="text-red-500 text-sm">{errors.paymentMethod}</p>}
         </div>
-        {paymentMethod && (
+        {(paymentMethod === 'creditCard' || paymentMethod === 'debitCard') && (
           <div>
             <div className="mb-4">
-              <label htmlFor="cardNumber" className="block text-gray-700 font-semibold mb-2">Card Number</label>
-              <input type="text" id="cardNumber" className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500" value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} />
+              <label htmlFor="cardNumber" className="block text-black font-semibold mb-2">Card Number</label>
+              <input type="text" id="cardNumber" className="w-full p-3 border border-gray-500 rounded focus:outline-none" value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} />
+              {errors.cardNumber && <p className="text-red-500 text-sm">{errors.cardNumber}</p>}
             </div>
             <div className="mb-4">
-              <label htmlFor="expiryDate" className="block text-gray-700 font-semibold mb-2">Expiry Date</label>
-              <input type="text" id="expiryDate" className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500" placeholder="MM/YY" value={expiryDate} onChange={(e) => setExpiryDate(e.target.value)} />
+              <label htmlFor="expiryDate" className="block text-black font-semibold mb-2">Expiry Date</label>
+              <input type="text" id="expiryDate" className="w-full p-3 border border-gray-500 rounded focus:outline-none" placeholder="MM/YY" value={expiryDate} onChange={(e) => setExpiryDate(e.target.value)} />
+              {errors.expiryDate && <p className="text-red-500 text-sm">{errors.expiryDate}</p>}
             </div>
             <div className="mb-4">
-              <label htmlFor="cvv" className="block text-gray-700 font-semibold mb-2">CVV</label>
-              <input type="text" id="cvv" className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500" value={cvv} onChange={(e) => setCvv(e.target.value)} />
+              <label htmlFor="cvv" className="block text-black font-semibold mb-2">CVV</label>
+              <input type="text" id="cvv" className="w-full p-3 border border-gray-500 rounded focus:outline-none" value={cvv} onChange={(e) => setCvv(e.target.value)} />
+              {errors.cvv && <p className="text-red-500 text-sm">{errors.cvv}</p>}
             </div>
           </div>
         )}
-        <button className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 focus:outline-none" onClick={handlePayment}>
+        {/* <div className="mb-4">
+          <label htmlFor="total" className="block text-black font-semibold mb-2">Total Amount</label>
+          <p id="total" className="w-full p-3 border border-gray-500 rounded bg-white text-black">{parseFloat(total).toFixed(2)}</p>
+        </div> */}
+        <button className="w-full bg-black text-white px-4 py-3 rounded hover:bg-gray-800 focus:outline-none transition duration-300 ease-in-out" onClick={handlePayment}>
           Pay Now
         </button>
-        <div className=' py-4'>
-          {paymentSuccessful && ( // Conditionally render success message
-          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+        {paymentSuccessful && (
+          <div className="mt-4  border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
             <strong className="font-bold">Payment successful!</strong>
           </div>
         )}
-        </div>
-        <p className="text-gray-600 text-sm mt-2">Total Amount: Rs. {parseFloat(total).toFixed(2)}</p>
+        <div className="mt-4 flex justify-center">
+  <div className="flex space-x-4">
+    <Link to="/" className="inline-block bg-white border border-black text-black font-bold py-2 px-4 rounded hover:bg-black hover:text-white hover:border-transparent transition duration-300 ease-in-out">
+      Home
+    </Link>
+    <Link to="/cart" className="inline-block bg-white border border-black text-black font-bold py-2 px-4 rounded hover:bg-black hover:text-white hover:border-transparent transition duration-300 ease-in-out">
+      Go to Cart
+    </Link>
+  </div>
+</div>
+
       </div>
     </div>
   );

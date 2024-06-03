@@ -6,7 +6,7 @@ export function Home() {
   return (
     <div>
       {/* <SideBar/> */}
-      <div className='ml-[80px]'>
+      <div>
         <Main/>
       </div>
     </div>

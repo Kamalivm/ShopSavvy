@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
-import { CiSearch } from 'react-icons/ci'
-import { IoMdPerson } from 'react-icons/io';
-import { NavLink } from 'react-router-dom';
-import { IoHeart } from 'react-icons/io5'
-import Data from './Data.jsx'
-import Cart from '../Pages/Cart.jsx';
+import React, { useState } from 'react';
+import { CiSearch } from 'react-icons/ci';
+import { IoHeart } from 'react-icons/io5';
+import { CiShoppingCart, CiDeliveryTruck } from 'react-icons/ci';
+import { Link , NavLink } from 'react-router-dom';
+import Data from './Data.jsx';
 
 const Main = () => {
     const Products = {
@@ -17,7 +16,7 @@ const Main = () => {
         kidsItems: Data.kidsItems,
         sportsItems: Data.sportsItems,
         bookItems: Data.bookItems,
-    }
+    };
 
     const [filteredProducts, setFilteredProducts] = useState(Products);
 
@@ -76,218 +75,59 @@ const Main = () => {
         setFilteredProducts(filteredArray);
     };
 
-    const [items, setSelectedItems] = useState([]);
-    const [cartItems, setCartItems] = useState([]);
-    const handleSubmit = (item) => {
-        setSelectedItems([...items, item]);
-    };
-
-    const removeFromCart = (itemId) => {
-        setSelectedItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
-      };
-
     return (
-        <div className='w-full relative'>
+        <div className='w-full relative bg-gray-100'>
             <div className='sticky top-0 z-10'>
-                <div className='header flex justify-between items-center p-4 bg-white'>
+                <div className='header flex justify-between items-center p-4 bg-white shadow-md'>
                     <h1 className='text-3xl font-bold'>ShopSavvy</h1>
-                    <div className="search flex justify-between items-center px-5 py-2 bg-gray">
-                        <input type="text" placeholder='Search product' className='b-transparent outline-0' onChange={searchHandler} />
-                        <button onClick={searchHandler}><CiSearch /></button>
-                        {/* <div className='px-4'>
-                            <NavLink to='/login'>
-                                <button className='bg-white px-2 py-2 rounded-full drop-shadow-xl'>
-                                    <IoMdPerson size={'1.5rem'} />
-                                </button>
+                    <div className="flex items-center space-x-4">
+                            <NavLink to='/cart' className="flex items-center justify-center bg-gray-700 text-white px-5 py-2 rounded-full hover:bg-gray-600 transition duration-300 ease-in-out transform hover:scale-105">
+                                <CiShoppingCart className="mr-2" size={'1.5rem'} />
+                                <span className="text-white">CartItems</span>
                             </NavLink>
-                        </div> */}
+                            <NavLink to='/favs' className="flex items-center justify-center bg-gray-700 text-white px-5 py-2 rounded-full hover:bg-gray-600 transition duration-300 ease-in-out transform hover:scale-105">
+                                <IoHeart className="mr-2 text-red-500" size={'1.5rem'} />
+                                <span className="text-white">FavouriteItems</span>
+                            </NavLink>
+                            <NavLink to='/orders' className="flex items-center justify-center bg-gray-700 text-white px-5 py-2 rounded-full hover:bg-gray-600 transition duration-300 ease-in-out transform hover:scale-105">
+                                <CiDeliveryTruck className="mr-2" size={'1.5rem'} />
+                                <span className="text-white">OrderItems</span>
+                            </NavLink>
+                        </div>
+                    <div className="search flex items-center px-5 py-2 bg-gray-200 rounded-lg shadow-sm">
+                        <input type="text" placeholder='Search product' className='bg-transparent outline-none w-full' onChange={searchHandler} />
+                        <button onClick={searchHandler}><CiSearch size={20} /></button>
                     </div>
                 </div>
-                <div className="categories bg-white w-full flex justify-between space-x-5 px-2 py-2">
-                    <div className='bg-black text-white px-5 py-2 rounded-full drop-shadow-xl'>
-                        <button onClick={() => filterByCategory('All')}>All</button>
-                    </div>
-
-                    <div className='bg-white px-5 hover:bg-black hover:text-white py-2 rounded-full drop-shadow-xl'>
-                        <button onClick={() => filterByCategory('groceryItems')}>Grocery</button>
-                    </div>
-
-                    <div className='bg-white px-5 hover:bg-black hover:text-white py-2 rounded-full drop-shadow-xl'>
-                        <button onClick={() => filterByCategory('fruitItems')}>Fruits</button>
-                    </div>
-
-                    <div className='bg-white px-5 py-2 hover:bg-black hover:text-white rounded-full drop-shadow-xl'>
-                        <button onClick={() => filterByCategory('vegetableItems')}>Vegetables</button>
-                    </div>
-
-                    <div className='bg-white px-5 py-2 hover:bg-black hover:text-white rounded-full drop-shadow-xl'>
-                        <button onClick={() => filterByCategory('stationaryItems')}>Stationary</button>
-                    </div>
-
-                    <div className='bg-white px-5 py-2 hover:bg-black hover:text-white rounded-full drop-shadow-xl'>
-                        <button onClick={() => filterByCategory('householdItems')}>Household</button>
-                    </div>
-
-                    <div className='bg-white px-5 py-2 hover:bg-black hover:text-white rounded-full drop-shadow-xl'>
-                        <button onClick={() => filterByCategory('bakeryItems')}>Bakery</button>
-                    </div>
-
-                    <div className='bg-white px-5 py-2 hover:bg-black hover:text-white rounded-full drop-shadow-xl'>
-                        <button onClick={() => filterByCategory('kidsItems')}>Kids</button>
-                    </div>
-
-                    <div className='bg-white px-5 py-2 hover:bg-black hover:text-white rounded-full drop-shadow-xl'>
-                        <button onClick={() => filterByCategory('sportsItems')}>Sports</button>
-                    </div>
-
-                    <div className='bg-white px-5 py-2 hover:bg-black hover:text-white rounded-full drop-shadow-xl'>
-                        <button onClick={() => filterByCategory('bookItems')}>Books</button>
-                    </div>
+                <div className="categories bg-white w-full flex justify-between space-x-5 px-4 py-3 shadow-md">
+                    {['All', 'groceryItems', 'fruitItems', 'vegetableItems', 'stationaryItems', 'householdItems', 'bakeryItems', 'kidsItems', 'sportsItems', 'bookItems'].map((category) => (
+                        <div key={category} className='px-5 py-2 hover:bg-black hover:text-white rounded-full transition-colors duration-300 cursor-pointer'>
+                            <button onClick={() => filterByCategory(category)}>
+                                {category.charAt(0).toUpperCase() + category.slice(1).replace('Items', '')}
+                            </button>
+                        </div>
+                    ))}
                 </div>
             </div>
-            <div className="products grid grid-cols-2 xl:grid-cols-5 lg:grid-cols-3 gap-9 p-4 z-20">
-                {filteredProducts && (
-                    <>
-                        {filteredProducts.groceryItems && filteredProducts.groceryItems.length > 0 && (
-                            filteredProducts.groceryItems.map((item) => (
-                                <div key={item.id} className="product flex flex-col justify-between h-[350px] bg-white drop-shadow-2xl p-2 border rounded-lg">
-                                    <img src={item.img} className='w-full h-[60%] object-cover p-2 rounded' />
-                                    <div className='flex flex-col justify-between flex-grow m-2 bg-gray-100 p-2 rounded'>
-                                        <h1 className='text-xl font-semibold'>{item.title}</h1>
-                                        <div className='flex justify-between items-center'>
-                                            <p className='text-xl font-bold'>Rs. {item.price}.00</p>
-                                            <button><IoHeart color={'red'} size={'1.4rem'} /></button>
-                                        </div>
-                                        <button className='mt-2 w-full bg-black text-white py-2 rounded' onClick={() => handleSubmit(item)}>Add to Cart</button>
-                                    </div>
+            <div className="products grid grid-cols-2 xl:grid-cols-5 lg:grid-cols-3 gap-6 p-6 z-20">
+                {Object.values(filteredProducts).flat().map((item) => (
+                    <Link to={`/product/${item.id}`} key={item.id} className="group">
+                        <div className="product flex flex-col justify-between h-[350px] bg-white shadow-lg p-4 rounded-lg border border-gray-200 transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:bg-blue-50 hover:border-blue-400">
+                            <img src={item.img} className='w-full h-[60%] object-cover rounded-t-lg' />
+                            <div className='flex flex-col justify-between flex-grow p-2'>
+                                <h1 className='text-lg font-semibold mb-1 group-hover:text-blue-600'>{item.title}</h1>
+                                <p className='text-sm text-gray-600 mb-2'>{item.description}</p>
+                                <div className='flex justify-between items-center'>
+                                    <p className='text-xl font-bold text-gray-800'>Rs. {item.price}.00</p>
+                                    {/* <button><IoHeart color={'red'} size={'1.4rem'} /></button> */}
                                 </div>
-                            )))}
-
-                        {filteredProducts.fruitItems && filteredProducts.fruitItems.length > 0 && (
-                            filteredProducts.fruitItems.map((item) => (
-                                <div key={item.id} className="product flex flex-col justify-between h-[350px] bg-white drop-shadow-2xl p-2 border rounded-lg">
-                                    <img src={item.img} className='w-full h-[60%] object-cover p-2 rounded' />
-                                    <div className='flex flex-col justify-between flex-grow m-2 bg-gray-100 p-2 rounded'>
-                                        <h1 className='text-xl font-semibold'>{item.title}</h1>
-                                        <div className='flex justify-between items-center'>
-                                            <p className='text-xl font-bold'>Rs. {item.price}.00</p>
-                                            <button><IoHeart color={'red'} size={'1.4rem'} /></button>
-                                        </div>
-                                        <button className='mt-2 w-full bg-black text-white py-2 rounded' onClick={() => handleSubmit(item)}>Add to Cart</button>
-                                    </div>
-                                </div>
-                            )))}
-
-                        {filteredProducts.vegetableItems && filteredProducts.vegetableItems.length > 0 && (
-                            filteredProducts.vegetableItems.map((item) => (
-                                <div key={item.id} className="product flex flex-col justify-between h-[350px] bg-white drop-shadow-2xl p-2 border rounded-lg">
-                                    <img src={item.img} className='w-full h-[60%] object-cover p-2 rounded' />
-                                    <div className='flex flex-col justify-between flex-grow m-2 bg-gray-100 p-2 rounded'>
-                                        <h1 className='text-xl font-semibold'>{item.title}</h1>
-                                        <div className='flex justify-between items-center'>
-                                            <p className='text-xl font-bold'>Rs. {item.price}.00</p>
-                                            <button><IoHeart color={'red'} size={'1.4rem'} /></button>
-                                        </div>
-                                        <button className='mt-2 w-full bg-black text-white py-2 rounded' onClick={() => handleSubmit(item)}>Add to Cart</button>
-                                    </div>
-                                </div>
-                            )))}
-
-                        {filteredProducts.stationaryItems && filteredProducts.stationaryItems.length > 0 && (
-                            filteredProducts.stationaryItems.map((item) => (
-                                <div key={item.id} className="product flex flex-col justify-between h-[350px] bg-white drop-shadow-2xl p-2 border rounded-lg">
-                                    <img src={item.img} className='w-full h-[60%] object-cover p-2 rounded' />
-                                    <div className='flex flex-col justify-between flex-grow m-2 bg-gray-100 p-2 rounded'>
-                                        <h1 className='text-xl font-semibold'>{item.title}</h1>
-                                        <div className='flex justify-between items-center'>
-                                            <p className='text-xl font-bold'>Rs. {item.price}.00</p>
-                                            <button><IoHeart color={'red'} size={'1.4rem'} /></button>
-                                        </div>
-                                        <button className='mt-2 w-full bg-black text-white py-2 rounded' onClick={() => handleSubmit(item)}>Add to Cart</button>
-                                    </div>
-                                </div>
-                            )))}
-
-                        {filteredProducts.householdItems && filteredProducts.householdItems.length > 0 && (
-                            filteredProducts.householdItems.map((item) => (
-                                <div key={item.id} className="product flex flex-col justify-between h-[350px] bg-white drop-shadow-2xl p-2 border rounded-lg">
-                                    <img src={item.img} className='w-full h-[60%] object-cover p-2 rounded' />
-                                    <div className='flex flex-col justify-between flex-grow m-2 bg-gray-100 p-2 rounded'>
-                                        <h1 className='text-xl font-semibold'>{item.title}</h1>
-                                        <div className='flex justify-between items-center'>
-                                            <p className='text-xl font-bold'>Rs. {item.price}.00</p>
-                                            <button><IoHeart color={'red'} size={'1.4rem'} /></button>
-                                        </div>
-                                        <button className='mt-2 w-full bg-black text-white py-2 rounded' onClick={() => handleSubmit(item)}>Add to Cart</button>
-                                    </div>
-                                </div>
-                            )))}
-
-                        {filteredProducts.bakeryItems && filteredProducts.bakeryItems.length > 0 && (
-                            filteredProducts.bakeryItems.map((item) => (
-                                <div key={item.id} className="product flex flex-col justify-between h-[350px] bg-white drop-shadow-2xl p-2 border rounded-lg">
-                                    <img src={item.img} className='w-full h-[60%] object-cover p-2 rounded' />
-                                    <div className='flex flex-col justify-between flex-grow m-2 bg-gray-100 p-2 rounded'>
-                                        <h1 className='text-xl font-semibold'>{item.title}</h1>
-                                        <div className='flex justify-between items-center'>
-                                            <p className='text-xl font-bold'>Rs. {item.price}.00</p>
-                                            <button><IoHeart color={'red'} size={'1.4rem'} /></button>
-                                        </div>
-                                        <button className='mt-2 w-full bg-black text-white py-2 rounded' onClick={() => handleSubmit(item)}>Add to Cart</button>
-                                    </div>
-                                </div>
-                            )))}
-
-                        {filteredProducts.kidsItems && filteredProducts.kidsItems.length > 0 && (
-                            filteredProducts.kidsItems.map((item) => (
-                                <div key={item.id} className="product flex flex-col justify-between h-[350px] bg-white drop-shadow-2xl p-2 border rounded-lg">
-                                    <img src={item.img} className='w-full h-[60%] object-cover p-2 rounded' />
-                                    <div className='flex flex-col justify-between flex-grow m-2 bg-gray-100 p-2 rounded'>
-                                        <h1 className='text-xl font-semibold'>{item.title}</h1>
-                                        <div className='flex justify-between items-center'>
-                                            <p className='text-xl font-bold'>Rs. {item.price}.00</p>
-                                            <button><IoHeart color={'red'} size={'1.4rem'} /></button>
-                                        </div>
-                                        <button className='mt-2 w-full bg-black text-white py-2 rounded' onClick={() => handleSubmit(item)}>Add to Cart</button>
-                                    </div>
-                                </div>
-                            )))}   
-
-                            {filteredProducts.sportsItems && filteredProducts.sportsItems.length > 0 && (
-                            filteredProducts.sportsItems.map((item) => (
-                                <div key={item.id} className="product flex flex-col justify-between h-[350px] bg-white drop-shadow-2xl p-2 border rounded-lg">
-                                    <img src={item.img} className='w-full h-[60%] object-cover p-2 rounded' />
-                                    <div className='flex flex-col justify-between flex-grow m-2 bg-gray-100 p-2 rounded'>
-                                        <h1 className='text-xl font-semibold'>{item.title}</h1>
-                                        <div className='flex justify-between items-center'>
-                                            <p className='text-xl font-bold'>Rs. {item.price}.00</p>
-                                            <button><IoHeart color={'red'} size={'1.4rem'} /></button>
-                                        </div>
-                                        <button className='mt-2 w-full bg-black text-white py-2 rounded' onClick={() => handleSubmit(item)}>Add to Cart</button>
-                                    </div>
-                                </div>
-                            )))}
-
-                            {filteredProducts.bookItems && filteredProducts.bookItems.length > 0 && (
-                            filteredProducts.bookItems.map((item) => (
-                                <div key={item.id} className="product flex flex-col justify-between h-[350px] bg-white drop-shadow-2xl p-2 border rounded-lg">
-                                    <img src={item.img} className='w-full h-[60%] object-cover p-2 rounded' />
-                                    <div className='flex flex-col justify-between flex-grow m-2 bg-gray-100 p-2 rounded'>
-                                        <h1 className='text-xl font-semibold'>{item.title}</h1>
-                                        <div className='flex justify-between items-center'>
-                                            <p className='text-xl font-bold'>Rs. {item.price}.00</p>
-                                            <button><IoHeart color={'red'} size={'1.4rem'} /></button>
-                                        </div>
-                                        <button className='mt-2 w-full bg-black text-white py-2 rounded' onClick={() => handleSubmit(item)}>Add to Cart</button>
-                                    </div>
-                                </div>
-                            )))} 
-                    </>
-                )}
+                            </div>
+                        </div>
+                    </Link>
+                ))}
             </div>
-            <Cart id="cart" items={items} removeFromCart={removeFromCart} />
         </div>
-    )
-}
+    );
+};
 
 export default Main;
