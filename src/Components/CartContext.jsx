@@ -23,27 +23,29 @@ const CartProvider = ({ children }) => {
     };
 
     const incrementQuantity = (id) => {
-        const updatedCartItems = cartItems.map(item => {
-            if (item.id === id) {
-                return { ...item, quantity: item.quantity + 1 };
-            }
-            return item;
-        });
-        setCartItems(updatedCartItems);
+        setCartItems(prevItems =>
+            prevItems.map(item =>
+                item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+            )
+        );
     };
 
     const decrementQuantity = (id) => {
-        const updatedCartItems = cartItems.map(item => {
-            if (item.id === id && item.quantity > 1) {
-                return { ...item, quantity: item.quantity - 1 };
-            }
-            return item;
-        });
-        setCartItems(updatedCartItems);
+        setCartItems(prevItems =>
+            prevItems.map(item =>
+                item.id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
+            )
+        );
+    };
+
+    const [totalAmount, setTotalAmount] = useState(0);
+
+    const updateTotalAmount = (amount) => {
+        setTotalAmount(amount);
     };
 
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart , incrementQuantity, decrementQuantity }}>
+        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, incrementQuantity, decrementQuantity ,  totalAmount, updateTotalAmount  }}>
             {children}
         </CartContext.Provider>
     );

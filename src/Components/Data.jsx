@@ -88,6 +88,7 @@ const Data = {
             title: 'Rice',
             price: 50,
             description: 'A staple food for many cultures, rich in carbohydrates.',
+            quantity: 20
         },
         {
             id: 2,
@@ -95,6 +96,7 @@ const Data = {
             title: 'Oil',
             price: 110,
             description: 'Pure vegetable oil, ideal for cooking and frying.',
+            quantity: 15
         },
         {
             id: 3,
@@ -102,6 +104,7 @@ const Data = {
             title: 'White Sugar',
             price: 35,
             description: 'Fine white sugar, perfect for baking and sweetening.',
+            quantity: 25
         },
         {
             id: 4,
@@ -109,6 +112,7 @@ const Data = {
             title: 'Salt',
             price: 30,
             description: 'Table salt, essential for seasoning and preserving food.',
+            quantity: 30
         },
         {
             id: 5,
@@ -116,6 +120,7 @@ const Data = {
             title: 'Soap',
             price: 45,
             description: 'Gentle soap for everyday use, suitable for all skin types.',
+            quantity: 40
         },
         {
             id: 6,
@@ -123,6 +128,7 @@ const Data = {
             title: 'Shampoo',
             price: 92,
             description: 'Revitalizing shampoo for clean and healthy hair.',
+            quantity: 20
         },
         {
             id: 7,
@@ -130,6 +136,7 @@ const Data = {
             title: 'ToothPaste',
             price: 50,
             description: 'Fluoride toothpaste for strong teeth and fresh breath.',
+            quantity: 35
         },
         {
             id: 8,
@@ -137,13 +144,17 @@ const Data = {
             title: 'ToothBrush',
             price: 20,
             description: 'Soft-bristle toothbrush for gentle yet effective cleaning.',
-        }],
-        stationaryItems:[{
+            quantity: 30
+        }
+    ],
+    stationaryItems:[
+        {
             id: 9,
             img: pen,
             title: 'Pen',
             price: 35,
             description: 'Smooth writing ballpoint pen.',
+            quantity: 50
         },
         {
             id: 10,
@@ -151,6 +162,7 @@ const Data = {
             title: 'Pencil',
             price: 15,
             description: 'High-quality graphite pencil for writing and drawing.',
+            quantity: 50
         },
         {
             id: 11,
@@ -158,6 +170,7 @@ const Data = {
             title: 'Eraser',
             price: 20,
             description: 'Soft eraser that removes pencil marks cleanly.',
+            quantity: 50
         },
         {
             id: 12,
@@ -165,6 +178,7 @@ const Data = {
             title: 'Scale',
             price: 25,
             description: 'Durable 30cm scale for precise measurements.',
+            quantity: 40
         },
         {
             id: 13,
@@ -172,13 +186,15 @@ const Data = {
             title: 'Sharpner',
             price: 5,
             description: 'Compact sharpener for easy pencil sharpening.',
+            quantity: 40
         },
         {
-            id: 114,
+            id: 14,
             img: note,
             title: 'Note',
             price: 50,
             description: 'Notebook with 200 pages for writing and note-taking.',
+            quantity: 20
         }
     ],
     fruitItems: [
@@ -188,6 +204,7 @@ const Data = {
             title: 'Apple',
             price: 150,
             description: 'Fresh and crispy apples, rich in fiber and vitamins.',
+            quantity: 30
         },
         {
             id: 16,
@@ -195,6 +212,7 @@ const Data = {
             title: 'Strawberry',
             price: 90,
             description: 'Sweet and juicy strawberries, perfect for desserts.',
+            quantity: 25
         },
         {
             id: 17,
@@ -202,6 +220,7 @@ const Data = {
             title: 'Melon',
             price: 30,
             description: 'Refreshing melon, great for hydration.',
+            quantity: 20
         },
         {
             id: 18,
@@ -209,6 +228,7 @@ const Data = {
             title: 'Mango',
             price: 25,
             description: 'Ripe and juicy mangoes, rich in vitamins.',
+            quantity: 35
         },
         {
             id: 19,
@@ -216,13 +236,15 @@ const Data = {
             title: 'Kiwi',
             price: 95,
             description: 'Tangy and nutritious kiwis, high in Vitamin C.',
+            quantity: 25
         },
         {
             id: 20,
             img: grapes,
             title: 'Grapes',
             price: 40,
-            description: 'Sweet and seedless grapes, perfect for snacking.',
+            description: 'Sweet and seedless grapes, perfect to taste',
+            quantity: 40
         },
         {
             id: 21,
@@ -230,6 +252,7 @@ const Data = {
             title: 'Orange',
             price: 60,
             description: 'Juicy oranges, excellent source of Vitamin C.',
+            quantity: 50
         },
         {
             id: 22,
@@ -237,6 +260,7 @@ const Data = {
             title: 'Amla',
             price: 20,
             description: 'Indian gooseberry, known for its high Vitamin C content.',
+            quantity: 30
         }
     ],
     vegetableItems: [
@@ -246,6 +270,7 @@ const Data = {
             title: 'Pumpkin',
             price: 20,
             description: 'Fresh pumpkin, ideal for soups and pies.',
+            quantity: 20
         },
         {
             id: 24,
@@ -253,6 +278,7 @@ const Data = {
             title: 'Carrot',
             price: 30,
             description: 'Crunchy carrots, great for salads and snacking.',
+            quantity: 25
         },
         {
             id: 25,
@@ -260,6 +286,7 @@ const Data = {
             title: 'Onion',
             price: 50,
             description: 'Versatile onions, essential for many dishes.',
+            quantity: 30
         },
         {
             id: 26,
@@ -267,6 +294,7 @@ const Data = {
             title: 'Cabbage',
             price: 15,
             description: 'Fresh cabbage, perfect for salads and stir-fries.',
+            quantity: 20
         },
         {
             id: 27,
@@ -274,6 +302,7 @@ const Data = {
             title: 'Potato',
             price: 50,
             description: 'Staple potatoes, great for boiling, baking, or frying.',
+            quantity: 35
         },
         {
             id: 28,
@@ -281,6 +310,7 @@ const Data = {
             title: 'Tomato',
             price: 50,
             description: 'Juicy tomatoes, perfect for salads and cooking.',
+            quantity: 40
         },
         {
             id: 29,
@@ -288,6 +318,7 @@ const Data = {
             title: 'Corn',
             price: 30,
             description: 'Sweet corn, great for boiling and grilling.',
+            quantity: 25
         },
         {
             id: 30,
@@ -295,6 +326,7 @@ const Data = {
             title: 'Brinjal',
             price: 12,
             description: 'Fresh brinjals, perfect for grilling and curries.',
+            quantity: 30
         },
         {
             id: 31,
@@ -302,6 +334,7 @@ const Data = {
             title: 'Bitter Gourd',
             price: 10,
             description: 'Bitter gourd, known for its health benefits.',
+            quantity: 20
         },
         {
             id: 32,
@@ -309,6 +342,7 @@ const Data = {
             title: 'Ladies Finger',
             price: 10,
             description: 'Fresh ladies fingers, great for stir-fries and curries.',
+            quantity: 30
         },
     ],
     householdItems:[
@@ -317,7 +351,8 @@ const Data = {
             img: broom,
             title: 'Broom Stick',
             price: 60,
-            description: 'Durable broom stick for effective cleaning.'
+            description: 'Durable broom stick for effective cleaning.',
+            quantity: 20
         },
         {
             id: 34,
@@ -325,6 +360,7 @@ const Data = {
             title: 'Bucket',
             price: 75,
             description: 'Sturdy plastic bucket for various uses.',
+            quantity: 25
         },
         {
             id: 35,
@@ -332,6 +368,7 @@ const Data = {
             title: 'Air Cooler',
             price: 3500,
             description: 'Efficient air cooler for hot summer days.',
+            quantity: 5
         },
         {
             id: 36,
@@ -339,6 +376,7 @@ const Data = {
             title: 'Curtain',
             price: 250,
             description: 'Beautiful curtain to enhance your room decor.',
+            quantity: 15
         },
         {
             id: 37,
@@ -346,6 +384,7 @@ const Data = {
             title: 'Table Fan',
             price: 200,
             description: 'Portable table fan for instant cooling.',
+            quantity: 20
         },
         {
             id: 38,
@@ -353,6 +392,7 @@ const Data = {
             title: 'Hair Dryer',
             price: 190,
             description: 'Compact hair dryer for quick drying.',
+            quantity: 10
         },
         {
             id: 39,
@@ -360,6 +400,7 @@ const Data = {
             title: 'Iron Box',
             price: 150,
             description: 'Reliable iron box for smooth and wrinkle-free clothes.',
+            quantity: 10
         },
         {
             id: 40,
@@ -367,6 +408,7 @@ const Data = {
             title: 'Glass Jar',
             price: 120,
             description: 'Glass jar for storing kitchen essentials.',
+            quantity: 20
         },
         {
             id: 41,
@@ -374,6 +416,7 @@ const Data = {
             title: 'Steel Ladder',
             price: 350,
             description: 'Sturdy steel ladder for household use.',
+            quantity: 5
         },
         {
             id: 42,
@@ -381,15 +424,17 @@ const Data = {
             title: 'Lamp',
             price: 220,
             description: 'Elegant lamp for your study or bedside.',
+            quantity: 10
         },
     ],
     bakeryItems:[
         {
             id: 43,
             img: bourbon,
-            title: 'BourBon',
+            title: 'Bourbon',
             price: 30,
-            description: 'Chocolate-flavored Bourbon biscuits.',
+            description: 'Chocolate cream biscuits, perfect for tea time.',
+            quantity: 30
         },
         {
             id: 44,
@@ -397,6 +442,7 @@ const Data = {
             title: 'Bread',
             price: 25,
             description: 'Freshly baked bread, perfect for sandwiches.',
+            quantity: 40
         },
         {
             id: 45,
@@ -404,6 +450,7 @@ const Data = {
             title: 'Choco Fills',
             price: 40,
             description: 'Delicious cookies filled with chocolate.',
+            quantity: 20
         },
         {
             id: 46,
@@ -411,6 +458,7 @@ const Data = {
             title: 'Chocolate',
             price: 200,
             description: 'Rich and creamy chocolate bar.',
+            quantity: 15
         },
         {
             id: 47,
@@ -418,6 +466,7 @@ const Data = {
             title: 'Chocos',
             price: 10,
             description: 'Chocolate-flavored cereal for a tasty breakfast.',
+            quantity: 25
         },
         {
             id: 48,
@@ -425,6 +474,7 @@ const Data = {
             title: 'Cookies',
             price: 60,
             description: 'Crispy and delicious cookies.',
+            quantity: 35
         },
         {
             id: 49,
@@ -432,6 +482,7 @@ const Data = {
             title: 'Gems',
             price: 10,
             description: 'Colorful candy-coated chocolate gems.',
+            quantity: 30
         },
         {
             id: 50,
@@ -439,6 +490,7 @@ const Data = {
             title: 'Hide And Seek',
             price: 25,
             description: 'Chocolate chip cookies.',
+            quantity: 20
         },
         {
             id: 51,
@@ -446,6 +498,7 @@ const Data = {
             title: 'JimJam',
             price: 35,
             description: 'Biscuits with jam filling.',
+            quantity: 25
         },
         {
             id: 52,
@@ -453,6 +506,7 @@ const Data = {
             title: 'Kisses',
             price: 65,
             description: 'Chocolate Kisses candies.',
+            quantity: 15
         },
         {
             id: 53,
@@ -460,6 +514,7 @@ const Data = {
             title: 'Kitkat',
             price: 20,
             description: 'Crispy wafer bars covered with chocolate.',
+            quantity: 30
         },
         {
             id: 54,
@@ -467,6 +522,7 @@ const Data = {
             title: 'Blue Lays',
             price: 10,
             description: 'Salted potato chips.',
+            quantity: 40
         },
         {
             id: 55,
@@ -474,6 +530,7 @@ const Data = {
             title: 'Yellow Lays',
             price: 10,
             description: 'Potato chips with a hint of lemon.',
+            quantity: 35
         },
         {
             id: 56,
@@ -481,6 +538,7 @@ const Data = {
             title: 'Green Lays',
             price: 35,
             description: 'Spicy green potato chips.',
+            quantity: 25
         },
         {
             id: 57,
@@ -488,132 +546,150 @@ const Data = {
             title: 'MilkBikis Biscuit',
             price: 15,
             description: 'Milk-flavored biscuits.',
+            quantity: 40
         },
         {
             id: 58,
             img: silkbubbly,
-            title: 'SilkBubbly',
-            price: 80,
-            description: 'Silky and bubbly chocolate bar.',
-        },
+            title: 'Silk Bubbly',
+            price: 25,
+            description: 'Silk chocolate with bubbles inside.',
+            quantity: 20
+        }
     ],
-    kidsItems:[
+    babyItems:[
         {
             id: 59,
             img: car,
-            title: 'ToyCar',
-            price: 230,
-            description: 'Miniature toy car for kids.',
+            title: 'Toy Car',
+            price: 150,
+            description: 'Colorful toy car for kids.',
+            quantity: 15
         },
         {
             id: 60,
             img: dancingcactus,
-            title: 'Dancing Cactus',
-            price: 130,
-            description: 'Interactive dancing cactus toy.',
+            title: 'Dancing Cactus Toy',
+            price: 200,
+            description: 'Funny dancing cactus toy.',
+            quantity: 10
         },
         {
             id: 61,
             img: babylotion,
             title: 'Baby Lotion',
-            price: 350,
-            description: 'Gentle baby lotion for soft skin.',
+            price: 120,
+            description: 'Gentle lotion for baby\'s soft skin.',
+            quantity: 20
         },
         {
             id: 62,
             img: bsoap,
             title: 'Baby Soap',
-            price: 90,
-            description: 'Mild soap for baby skin.',
+            price: 50,
+            description: 'Mild soap suitable for baby\'s delicate skin.',
+            quantity: 25
         },
         {
             id: 63,
             img: bdress,
             title: 'Baby Dress',
-            price: 150,
-            description: 'Comfortable baby dress.',
+            price: 180,
+            description: 'Cute and comfortable dress for babies.',
+            quantity: 15
         },
         {
             id: 64,
             img: btoys,
-            title: 'Baby Toys',
-            price: 190,
-            description: 'Set of safe and colorful baby toys.',
+            title: 'Assorted Toys',
+            price: 250,
+            description: 'Set of assorted toys for toddlers.',
+            quantity: 20
         },
         {
             id: 65,
             img: btowel,
             title: 'Baby Towel',
-            price: 150,
-            description: 'Soft and absorbent baby towel.',
-        },
+            price: 80,
+            description: 'Soft towel for baby\'s bath time.',
+            quantity: 25
+        }
     ],
     sportsItems:[
         {
             id: 66,
             img: baseball,
-            title: 'BaseBall',
-            price: 20,
-            description: 'Standard baseball for sports activities.',
+            title: 'Baseball',
+            price: 200,
+            description: 'Baseball for outdoor sports.',
+            quantity: 15
         },
         {
             id: 67,
             img: cricketbat,
             title: 'Cricket Bat',
-            price: 210,
-            description: 'Professional cricket bat for serious players.',
+            price: 500,
+            description: 'Cricket bat for playing cricket.',
+            quantity: 10
         },
         {
             id: 68,
             img: football,
-            title: 'FootBall',
-            price: 280,
-            description: 'Durable football for outdoor play.',
+            title: 'Football',
+            price: 600,
+            description: 'Football for playing soccer.',
+            quantity: 12
         },
         {
             id: 69,
             img: skateshoe,
-            title: 'Skating Shoe',
-            price: 1250,
-            description: 'High-quality skating shoes for smooth rides.',
+            title: 'Skate Shoes',
+            price: 350,
+            description: 'Shoes for skating.',
+            quantity: 20
         },
         {
             id: 70,
             img: tennisbat,
             title: 'Tennis Bat',
-            price: 550,
-            description: 'Lightweight tennis bat for improved performance.',
-        },
+            price: 450,
+            description: 'Tennis bat for playing tennis.',
+            quantity: 18
+        }
     ],
     bookItems:[
         {
             id: 71,
-            img: harrypotter,
-            title: 'Harry Potter',
-            price: 2300,
-            description: 'Complete set of Harry Potter books.',
+            img: strangebook,
+            title: 'Strange Book',
+            price: 100,
+            description: 'A mysterious book with strange stories.',
+            quantity: 25
         },
         {
             id: 72,
-            img: newname,
-            title: 'Write a New Name in the Book of Life',
-            price: 1350,
-            description: 'Inspirational book about life and self-discovery.',
+            img: readinglist,
+            title: 'Reading List Book',
+            price: 80,
+            description: 'Book containing a list of must-reads.',
+            quantity: 30
         },
         {
             id: 73,
-            img: readinglist,
-            title: 'The Reading List',
-            price: 1580,
-            description: 'Novel about the transformative power of books.',
+            img: newname,
+            title: 'New Name Book',
+            price: 120,
+            description: 'Book about finding a new identity.',
+            quantity: 20
         },
         {
             id: 74,
-            img: strangebook,
-            title: 'Stranger in a Strange Land',
-            price: 1900,
-            description: 'Science fiction classic by Robert A. Heinlein.',
-        },
+            img: harrypotter,
+            title: 'Harry Potter Book',
+            price: 300,
+            description: 'The magical world of Harry Potter.',
+            quantity: 10
+        }
     ]
 };
 

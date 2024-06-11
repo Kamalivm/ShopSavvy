@@ -2,14 +2,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Data from '../Components/Data.jsx';
 import { CartContext } from '../Components/CartContext';
-import { IoCheckmarkCircle, IoHeartOutline, IoHeart } from 'react-icons/io5';
+import { IoCheckmarkCircle } from 'react-icons/io5';
 
 const ProductDetails = () => {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const { addToCart } = useContext(CartContext);
     const [notification, setNotification] = useState(false);
-    const [isFavorite, setIsFavorite] = useState(false);
     const [review, setReview] = useState('');
     const [reviews, setReviews] = useState([]);
 
@@ -27,7 +26,6 @@ const ProductDetails = () => {
         const result = findProductById(id);
         if (result) {
             setProduct(result.product);
-            setIsFavorite(localStorage.getItem(`favorite_${id}`) === 'true');
             setReviews(result.product.reviews || []);
         }
     }, [id]);
@@ -44,11 +42,6 @@ const ProductDetails = () => {
         }, 3000);
     };
 
-    const handleToggleFavorite = () => {
-        setIsFavorite(!isFavorite);
-        localStorage.setItem(`favorite_${id}`, !isFavorite);
-    };
-
     const handleReviewSubmit = (e) => {
         e.preventDefault();
         const newReview = {
@@ -58,6 +51,9 @@ const ProductDetails = () => {
         setReviews([...reviews, newReview]);
         setReview('');
     };
+
+    // Button color class
+    const buttonColorClass = "from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800";
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -75,20 +71,13 @@ const ProductDetails = () => {
                             alt={product.title} 
                             className="object-cover w-full h-80 rounded-lg shadow-md transition-transform transform hover:scale-105"
                         />
-                        <div className="mt-5">
-                            <button 
-                                onClick={handleToggleFavorite}
-                                className={`text-gray-500 hover:text-red-500 focus:outline-none ${isFavorite ? 'text-red-500' : ''}`}
-                            >
-                                {isFavorite ? <IoHeart size="2rem" color="#ff4d4f" /> : <IoHeartOutline size="2rem" />}
-                            </button>
-                        </div>
                         <div className="absolute bottom-2 right-2 bg-gray-900 text-white rounded-md py-1 px-2 text-sm font-semibold">{product.category}</div>
                     </div>
                     <div className="w-full md:w-1/2 mt-6 md:mt-0">
                         <h1 className="text-3xl font-bold mb-2 text-gray-800">{product.title}</h1>
                         <p className="text-xl font-semibold mb-4 text-blue-600">Rs. {product.price}.00</p>
                         <p className="text-lg text-gray-700 mb-4">{product.description}</p>
+                        <p className="text-lg text-gray-700 mb-4">Quantity: {product.quantity}</p>
                         <div className="mt-8">
                             <h2 className="text-2xl font-bold text-gray-800">Reviews</h2>
                             <div className="mt-4">
@@ -111,39 +100,45 @@ const ProductDetails = () => {
                                     value={review} 
                                     onChange={(e) => setReview(e.target.value)} 
                                 />
-                                 <button 
+                                <button 
                                     type="submit" 
-                                    className="mt-2 bg-gradient-to-r from-black to-blue-700 hover:from-black hover:to-blue-800 text-white px-4 py-2 rounded-md">
+                                    className={`mt-2 bg-gradient-to-r ${buttonColorClass} text-white px-4 py-2 rounded-md`}
+                                >
                                     Submit Review
                                 </button>
                             </form>
                         </div>
                         
                         <button 
-                            className='mt-5 bg-gradient-to-r from-black to-blue-700 hover:from-black hover:to-blue-700 text-white text-lg font-semibold w-full py-2 rounded-full transition-all duration-300 transform hover:scale-105'
+                            className={`mt-5 bg-gradient-to-r ${buttonColorClass} text-white text-lg font-semibold w-full py-2 rounded-full transition-all duration-300 transform hover:scale-105`}
                             onClick={() => handleAddToCart(product)}
                         >
                             Add to Cart
                         </button>
-                        <div className="mt-5 flex justify-around w-full space-x-4">
-                            <Link 
-                                to="/" 
-                                className="flex items-center justify-center bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-600 hover:to-gray-800 text-white text-lg font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md"
-                            >
-                                <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12h2m4 0h12m0 0l-7-7m7 7l-7 7"></path></svg>
-                                Home
-                            </Link>
-                            <Link 
-                                to="/cart" 
-                                className="flex items-center justify-center bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-600 hover:to-gray-800 text-white text-lg font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md"
-                            >
-                                <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l1.4-7H6.6M7 13L5.6 6m1.4 7l1 5h9.6l1-5M5 6h14m-3 10a1 1 0 100 2 1 1 0 000-2zm-8 0a1 1 0 100 2 1 1 0 000-2z"></path></svg>
-                                Cart
-                            </Link>
-                        </div>
                     </div>
                 </div>
+            
+            <div className="mt-5 flex justify-around w-full space-x-4">
+                <Link 
+                    to="/" 
+                    className={`flex items-center justify-center text-gray-700 hover:text-gray-900 text-lg font-semibold`}
+                >
+                    <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12h2m4 0h12m0 0l-7-7m7 7l-7 7"></path>
+                    </svg>
+                    Home
+                </Link>
+                <Link 
+                    to="/cart" 
+                    className={`flex items-center justify-center text-gray-700 hover:text-gray-900 text-lg font-semibold`}
+                >
+                    <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l1.4-7H6.6M7 13L5.6 6m1.4 7l1 5h9.6l1-5M5 6h14m-3 10a1 1 0 100 2 1 1 0 000-2zm-8 0a1 1 0 100 2 1 1 0 000-2z"></path>
+                    </svg>
+                    Cart
+                </Link>
             </div>
+        </div>
         </div>
     );
 };

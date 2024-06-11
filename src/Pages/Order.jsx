@@ -1,18 +1,20 @@
-import React from 'react'
-import { BsArrowLeft } from 'react-icons/bs'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { IoHeart } from 'react-icons/io5';
+
 export function Order() {
   return (
-    <div className='w-full h-screen flex justify-center items-center'>
-      <div className='space-y-5 flex flex-col justify-center items-center'>
-        <h1 className='text-xl font-semibold'>You don't have any ordered products</h1>
-        <NavLink to='/'>
-        <button className='bg-gray-800 text-white px-5 py-2 rounded-m drop-shadow-xl flex items-center space-x-2'>
-          <span>Back to the Shop</span>
-          <BsArrowLeft/>
-        </button>
-        </NavLink>
+    <div className='w-full h-screen flex justify-center items-center bg-gray-100'>
+      <div className='space-y-5 flex flex-col justify-center items-center bg-white p-6 rounded-lg shadow-lg'>
+        <h1 className='text-2xl font-semibold text-gray-800 mb-4'>You don't have any ordered products</h1>
+        <div className="products grid grid-cols-2 xl:grid-cols-5 lg:grid-cols-3 gap-6">
+        </div>
+        <div className="mt-8 text-center">
+          <Link to="/" className="text-blue-600 hover:underline text-lg font-semibold">
+            Continue Shopping
+          </Link>
+        </div>
       </div>
-    </div>  
-  )
+    </div>
+  );
 }
