@@ -19,7 +19,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        cd client
+        cd frontend
         npm install
 
     - name: Run Tests
